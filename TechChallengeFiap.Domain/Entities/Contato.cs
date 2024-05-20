@@ -9,5 +9,6 @@
         public DDD? DDD { get; set; }
 
         public Contato() {}
+
     }
 }
