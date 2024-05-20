@@ -7,9 +7,9 @@
 
         public Regiao() { }
 
-        public Regiao(string descricao)
+        public Regiao(Guid id, string descricao)
         {
-            Id = Guid.NewGuid();
+            Id = id;
             DataCriacao = DateTime.Now;
             Descricao = descricao;
         }

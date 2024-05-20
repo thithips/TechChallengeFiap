@@ -21,6 +21,8 @@ namespace TechChallengeFiap.Infrastructure.Contexto
             base.OnModelCreating(modelBuilder);
 
             RegiaoSeed.SeedsRegioes(modelBuilder);
+            EstadoSeed.SeedsEstados(modelBuilder);
+            DDDSeed.SeedsDDDs(modelBuilder);
         }
     }
 }
