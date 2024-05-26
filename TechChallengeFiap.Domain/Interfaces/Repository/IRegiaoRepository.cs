@@ -1,9 +1,7 @@
 ﻿using TechChallengeFiap.Domain.Entities;
-using TechChallengeFiap.Domain.Interfaces;
 
-namespace TechChallengeFiap.Infrastructure.Interface
+namespace TechChallengeFiap.Domain.Interfaces.Repository
 {
     public interface IRegiaoRepository : IBaseRepository<Regiao>
-    {
-    }
+    {}
 }
