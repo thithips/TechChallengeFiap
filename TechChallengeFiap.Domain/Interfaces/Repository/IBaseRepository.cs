@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using TechChallengeFiap.Domain.Entities;
 
-namespace TechChallengeFiap.Domain.Interfaces
+namespace TechChallengeFiap.Domain.Interfaces.Repository
 {
     public interface IBaseRepository<T> where T : BaseEntity
     {

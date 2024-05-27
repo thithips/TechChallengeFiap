@@ -12,7 +12,13 @@ namespace TechChallengeFiap.Infrastructure.Mapping
             builder.Property(x => x.Telefone).HasColumnType("VARCHAR(11)").IsRequired();
             builder.Property(x => x.Nome).HasColumnType("VARCHAR(100)").IsRequired();
             builder.Property(x => x.DataCriacao).HasColumnType("DATETIME").IsRequired();
-            builder.Property(x => x.Email).HasColumnType("VARCHAR(50)").IsRequired();
+            builder.OwnsOne(x => x.Email, email =>
+            {
+                email.Property(x => x.Endereco)
+                .IsRequired()
+                .HasColumnName("Email")
+                .HasColumnType("VARCHAR(50)");
+            });
             builder.Property(x => x.IdDDD).IsRequired();
 
             builder.HasOne(x => x.DDD).WithMany(x => x.Contatos).HasForeignKey(x => x.IdDDD);

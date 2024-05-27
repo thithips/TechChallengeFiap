@@ -4,9 +4,9 @@ using TechChallengeFiap.Infrastructure.Contexto;
 
 namespace TechChallengeFiap.Infrastructure.Repository
 {
-    public class RegiaoRepository : BaseRepository<Regiao>, IRegiaoRepository
+    public class DDDRepository : BaseRepository<DDD>, IDDDRepository
     {
-        public RegiaoRepository(ApplicationDbContexto context) : base(context)
+        public DDDRepository(ApplicationDbContexto context) : base(context)
         {}
     }
 }

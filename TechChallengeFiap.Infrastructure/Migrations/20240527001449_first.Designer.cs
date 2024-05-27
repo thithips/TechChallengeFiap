@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TechChallengeFiap.Infrastructure.Contexto;
 
@@ -11,9 +12,11 @@ using TechChallengeFiap.Infrastructure.Contexto;
 namespace TechChallengeFiap.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContexto))]
-    partial class ApplicationDbContextoModelSnapshot : ModelSnapshot
+    [Migration("20240527001449_first")]
+    partial class first
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
