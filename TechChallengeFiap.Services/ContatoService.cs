@@ -12,8 +12,8 @@ namespace TechChallengeFiap.Services
 
         public ContatoService(IContatoRepository repo, IDDDRepository dddRepository)
         {
-            _repository = repo;
-            _dddRepository = dddRepository;
+            _repository = repo ?? throw new ArgumentNullException(nameof(repo));
+            _dddRepository = dddRepository ?? throw new ArgumentNullException(nameof(dddRepository));
         }
 
         public async Task<IEnumerable<ContatoViewModel>> BuscarTodos()
@@ -22,7 +22,7 @@ namespace TechChallengeFiap.Services
             return entities.Select(x => new ContatoViewModel
             {
                 Id = x.Id,
-                Email = x.Email,
+                Email = x.Email.Endereco,
                 Nome = x.Nome,
                 Telefone = x.DDD.NumeroDDD + x.Telefone
             });
@@ -31,7 +31,7 @@ namespace TechChallengeFiap.Services
         public async Task<ContatoViewModel> BuscarPorId(Guid id)
         {
             var entity = await _repository.SelecionarPorId(id);
-            return new ContatoViewModel { Id = entity.Id, Email = entity.Email, Nome = entity.Nome, Telefone = entity.DDD.NumeroDDD + entity.Telefone };
+            return new ContatoViewModel { Id = entity.Id, Email = entity.Email.Endereco, Nome = entity.Nome, Telefone = entity.DDD.NumeroDDD + entity.Telefone };
         }
 
         public async Task<IEnumerable<ContatoViewModel>> BuscarPorDDD(Guid idDDD)
@@ -40,7 +40,7 @@ namespace TechChallengeFiap.Services
             return entities.Select(x => new ContatoViewModel
             {
                 Id = x.Id,
-                Email = x.Email,
+                Email = x.Email.Endereco,
                 Nome = x.Nome,
                 Telefone = x.DDD.NumeroDDD + x.Telefone
             });
@@ -52,7 +52,7 @@ namespace TechChallengeFiap.Services
             return entities.Select(x => new ContatoViewModel
             {
                 Id = x.Id,
-                Email = x.Email,
+                Email = x.Email.Endereco,
                 Nome = x.Nome,
                 Telefone = x.DDD.NumeroDDD + x.Telefone
             });

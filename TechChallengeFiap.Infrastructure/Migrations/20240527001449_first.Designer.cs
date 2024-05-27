@@ -12,7 +12,7 @@ using TechChallengeFiap.Infrastructure.Contexto;
 namespace TechChallengeFiap.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContexto))]
-    [Migration("20240526032615_first")]
+    [Migration("20240527001449_first")]
     partial class first
     {
         /// <inheritdoc />
@@ -33,10 +33,6 @@ namespace TechChallengeFiap.Infrastructure.Migrations
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("DATETIME");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<Guid>("IdDDD")
                         .HasColumnType("uniqueidentifier");
@@ -84,536 +80,536 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("439de6c8-40ec-4cf1-8dd8-f12af22c74a3"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3501),
+                            Id = new Guid("f9bde588-aade-4097-ab4d-6552cca6a394"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4434),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)11,
                             Regioes = "Região Metropolitana de São Paulo/Região Metropolitana de Jundiaí/Região Geográfica Imediata de Bragança Paulista"
                         },
                         new
                         {
-                            Id = new Guid("a684ff9b-52b9-4799-b3e5-7697cc8385e6"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3503),
+                            Id = new Guid("c6677d7c-7493-4106-aaa4-4763f3a4b197"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4437),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)12,
                             Regioes = "Região Metropolitana do Vale do Paraíba e Litoral Norte"
                         },
                         new
                         {
-                            Id = new Guid("3c6c40d0-7e6f-4b79-a0ae-314b50830b4d"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3524),
+                            Id = new Guid("c99d60b1-6485-42af-b6e3-5004aa2843db"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4439),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)13,
                             Regioes = "Região Metropolitana da Baixada Santista/Vale do Ribeira"
                         },
                         new
                         {
-                            Id = new Guid("cca7e169-d418-4637-904b-4a79ac365e50"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3527),
+                            Id = new Guid("45c9967a-c314-4b94-b667-27d1d6073641"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4441),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)14,
                             Regioes = "Avaré/Bauru/Botucatu/Jaú/Lins/Marília/Ourinhos"
                         },
                         new
                         {
-                            Id = new Guid("e88e04b4-ddb5-47b0-b54b-ab35b77a2889"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3528),
+                            Id = new Guid("7ea1db80-7353-4896-9430-09d1b4b99980"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4474),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)15,
                             Regioes = "Itapetininga/Itapeva/Sorocaba/Tatuí"
                         },
                         new
                         {
-                            Id = new Guid("76cd09a8-44e4-421f-9cd9-782f4b7074f5"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3531),
+                            Id = new Guid("07bd9cf3-34d7-41c3-a031-89922920cb19"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4476),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)16,
                             Regioes = "Araraquara/Franca/Jaboticabal/Ribeirão Preto/São Carlos/Sertãozinho"
                         },
                         new
                         {
-                            Id = new Guid("60dd1ef9-dfe7-4148-a865-2979804fc4e7"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3533),
+                            Id = new Guid("8e14eb41-12b1-427b-8baf-5975378cf940"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4478),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)17,
                             Regioes = "Barretos/Catanduva/Fernandópolis/Jales/São José do Rio Preto/Votuporanga"
                         },
                         new
                         {
-                            Id = new Guid("680f8cac-5a16-4f50-b690-5ec1579bd086"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3535),
+                            Id = new Guid("9c569af6-1906-4291-9f3e-6a8f9f51d91b"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4480),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)18,
                             Regioes = "Andradina/Araçatuba/Assis/Birigui/Dracena/Presidente Prudente"
                         },
                         new
                         {
-                            Id = new Guid("6d1e12e1-498a-41f9-b19e-d495c7c10ad8"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3537),
+                            Id = new Guid("c73afde1-6434-403f-83ab-e5d7f19ffaa6"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4482),
                             IdEstado = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
                             NumeroDDD = (byte)19,
                             Regioes = "Americana/Campinas/Limeira/Piracicaba/Rio Claro/São João da Boa Vista"
                         },
                         new
                         {
-                            Id = new Guid("c06a393f-aee2-407d-959a-baafec2847fa"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3539),
+                            Id = new Guid("81dc7af6-0cb7-4c9e-bb12-edd64a714382"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4484),
                             IdEstado = new Guid("3b0458c6-5eff-4342-bd53-4591d7c006de"),
                             NumeroDDD = (byte)21,
                             Regioes = "Rio de Janeiro e Região Metropolitana/Teresópolis"
                         },
                         new
                         {
-                            Id = new Guid("9ca3d698-a85d-49a7-b2dd-f148fa4236ad"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3545),
+                            Id = new Guid("f0e88c0f-af73-46eb-a01f-21cd5f297ee5"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4485),
                             IdEstado = new Guid("3b0458c6-5eff-4342-bd53-4591d7c006de"),
                             NumeroDDD = (byte)22,
                             Regioes = "Cabo Frio/Campos dos Goytacazes/Itaperuna/Macaé/Nova Friburgo"
                         },
                         new
                         {
-                            Id = new Guid("87828884-78e2-4734-b32d-28cc98676095"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3547),
+                            Id = new Guid("913339bf-d4bc-4dd6-b8b5-d249a44a32e6"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4487),
                             IdEstado = new Guid("3b0458c6-5eff-4342-bd53-4591d7c006de"),
                             NumeroDDD = (byte)24,
                             Regioes = "Angra dos Reis/Petrópolis/Volta Redonda/Piraí"
                         },
                         new
                         {
-                            Id = new Guid("7cb2b49c-fecc-4b42-a38b-6574092b1796"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3549),
+                            Id = new Guid("38960460-6ea6-4d66-b9ec-9d5f533b19c0"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4494),
                             IdEstado = new Guid("20792100-80af-49a8-8195-f7c36441c38d"),
                             NumeroDDD = (byte)27,
                             Regioes = "Vitória e Região Metropolitana/Colatina/Linhares/Santa Maria de Jetibá"
                         },
                         new
                         {
-                            Id = new Guid("bf135b2e-375a-4b57-83b6-29abcbc24d50"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3551),
+                            Id = new Guid("1e798bb6-f9ef-40fc-bcff-4ed6c7172618"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4496),
                             IdEstado = new Guid("20792100-80af-49a8-8195-f7c36441c38d"),
                             NumeroDDD = (byte)28,
                             Regioes = "Cachoeiro de Itapemirim/Castelo/Itapemirim/Marataízes"
                         },
                         new
                         {
-                            Id = new Guid("8ff01699-4e7f-4a6c-bf6d-0eee3058ad16"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3552),
+                            Id = new Guid("b523dafb-dadc-4e21-9064-5d9c6b2e444f"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4497),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)31,
                             Regioes = "Belo Horizonte e Região Metropolitana/Conselheiro Lafaiete/Ipatinga/Viçosa"
                         },
                         new
                         {
-                            Id = new Guid("f1d7e2e1-e658-4047-8071-17f77a7ebe45"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3555),
+                            Id = new Guid("d490206e-293f-4b97-9d6a-6f816237b31f"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4499),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)32,
                             Regioes = "Barbacena/Juiz de Fora/Muriaé/São João del-Rei/Ubá"
                         },
                         new
                         {
-                            Id = new Guid("cf54e994-6eaf-442d-ab5f-59046e52c766"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3556),
+                            Id = new Guid("7eca720f-2cc5-4428-a1c5-cdd98423bc73"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4502),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)33,
                             Regioes = "Almenara/Caratinga/Governador Valadares/Manhuaçu/Teófilo Otoni"
                         },
                         new
                         {
-                            Id = new Guid("45da1ab1-4ef9-4d97-af9d-e5463b08ade0"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3558),
+                            Id = new Guid("c5918313-fd54-472a-b92d-1f34bc3a141a"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4504),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)34,
                             Regioes = "Araguari/Araxá/Patos de Minas/Uberlândia/Uberaba"
                         },
                         new
                         {
-                            Id = new Guid("c402126c-fc7c-4a63-a1bf-e4d663b0e399"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3563),
+                            Id = new Guid("9283fa9c-50de-4ebe-a639-6bcdec2f0968"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4505),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)35,
                             Regioes = "Alfenas/Guaxupé/Lavras/Poços de Caldas/Pouso Alegre/Varginha"
                         },
                         new
                         {
-                            Id = new Guid("9d898860-ff36-4879-bab3-0d914e8a1d70"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3565),
+                            Id = new Guid("36c459a9-4c10-4533-b72a-b9dd2bfcf73d"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4507),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)37,
                             Regioes = "Bom Despacho/Divinópolis/Formiga/Itaúna/Pará de Minas"
                         },
                         new
                         {
-                            Id = new Guid("c2f4930b-52e1-43da-ba33-e274ed981db3"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3566),
+                            Id = new Guid("de1c4ecf-cade-4394-a557-f741bef5a2a9"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4512),
                             IdEstado = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
                             NumeroDDD = (byte)38,
                             Regioes = "Curvelo/Diamantina/Montes Claros/Pirapora/Unaí"
                         },
                         new
                         {
-                            Id = new Guid("be8c0883-9fd4-42b1-ae0c-a6042af52c3e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3568),
+                            Id = new Guid("2ee9be52-6662-40c6-b598-5c613c059c54"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4514),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)41,
                             Regioes = "Curitiba e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("367c1529-6346-4763-9b23-3a8bdea6afd5"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3570),
+                            Id = new Guid("f17bcb7f-bc5b-4f30-ac9d-b7cfb87d402c"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4515),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)42,
                             Regioes = "Ponta Grossa/Guarapuava"
                         },
                         new
                         {
-                            Id = new Guid("a3d9ad82-b216-436e-ad25-80cc01d76262"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3572),
+                            Id = new Guid("d3fa89dc-8183-4bbf-a37c-365826491ced"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4517),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)43,
                             Regioes = "Apucarana/Londrina"
                         },
                         new
                         {
-                            Id = new Guid("b94f80d3-d344-480f-a721-c942f0a00092"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3574),
+                            Id = new Guid("60610e8c-b98e-4cdf-9585-50e498a9cca6"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4519),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)44,
                             Regioes = "Maringá/Campo Mourão/Umuarama"
                         },
                         new
                         {
-                            Id = new Guid("58d5c341-003e-426c-ab56-b7f072a524c1"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3576),
+                            Id = new Guid("f6cbeb67-f846-4160-91ad-5bed89ed704e"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4521),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)45,
                             Regioes = "Cascavel/Foz do Iguaçu"
                         },
                         new
                         {
-                            Id = new Guid("d414cbac-8ed9-4d87-8c50-5f17e9194e15"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3580),
+                            Id = new Guid("eef46fa6-6b1f-45d4-84c7-cb22e99831fa"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4522),
                             IdEstado = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
                             NumeroDDD = (byte)46,
                             Regioes = "Francisco Beltrão/Pato Branco"
                         },
                         new
                         {
-                            Id = new Guid("20bc6c47-68e2-4410-ac9c-6778e66bc66e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3582),
+                            Id = new Guid("e4567660-69b7-4e75-baac-7c5c64628783"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4524),
                             IdEstado = new Guid("dbb01ebc-4776-4f72-b630-7b249d81c440"),
                             NumeroDDD = (byte)47,
                             Regioes = "Balneário Camboriú/Blumenau/Itajaí/Joinville"
                         },
                         new
                         {
-                            Id = new Guid("ea83f9e6-e2bc-4dc6-a8ac-d58b4441af54"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3584),
+                            Id = new Guid("2bb68928-fe0a-4efc-8316-085f950841db"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4529),
                             IdEstado = new Guid("dbb01ebc-4776-4f72-b630-7b249d81c440"),
                             NumeroDDD = (byte)48,
                             Regioes = "Florianópolis e Região Metropolitana/Criciúma"
                         },
                         new
                         {
-                            Id = new Guid("f88343ba-a706-4f81-9554-1a1d02cb106a"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3586),
+                            Id = new Guid("d587e61e-f773-4c2a-9dc6-6caf85cc33be"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4531),
                             IdEstado = new Guid("dbb01ebc-4776-4f72-b630-7b249d81c440"),
                             NumeroDDD = (byte)49,
                             Regioes = "Caçador/Chapecó/Lages"
                         },
                         new
                         {
-                            Id = new Guid("49a3ed4f-984d-480c-a9dc-807087d7c360"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3588),
+                            Id = new Guid("f348eff9-a667-4f5a-a969-27fbad25c941"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4533),
                             IdEstado = new Guid("6b57ce63-eb3a-4c73-8b59-8098e6862d48"),
                             NumeroDDD = (byte)51,
                             Regioes = "Porto Alegre e Região Metropolitana/Santa Cruz do Sul/Litoral Norte"
                         },
                         new
                         {
-                            Id = new Guid("9ae135c7-7990-4a26-b5cd-ceabbc1243fa"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3589),
+                            Id = new Guid("37006624-40e5-4fd5-9ae6-ca161c7ec33a"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4535),
                             IdEstado = new Guid("6b57ce63-eb3a-4c73-8b59-8098e6862d48"),
                             NumeroDDD = (byte)53,
                             Regioes = "Pelotas/Rio Grande"
                         },
                         new
                         {
-                            Id = new Guid("d587b2db-ff18-4e27-9922-1cfe4dd433b4"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3591),
+                            Id = new Guid("5cd55c37-e1ad-493c-8447-b3f3f3c4d568"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4536),
                             IdEstado = new Guid("6b57ce63-eb3a-4c73-8b59-8098e6862d48"),
                             NumeroDDD = (byte)54,
                             Regioes = "Caxias do Sul/Passo Fundo"
                         },
                         new
                         {
-                            Id = new Guid("cf0319b9-66e8-44aa-a247-48fd35d1896e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3593),
+                            Id = new Guid("9afcca82-b65a-4401-9357-6282e236be25"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4538),
                             IdEstado = new Guid("6b57ce63-eb3a-4c73-8b59-8098e6862d48"),
                             NumeroDDD = (byte)55,
                             Regioes = "Santa Maria/Santana do Livramento/Santo Ângelo/Uruguaiana"
                         },
                         new
                         {
-                            Id = new Guid("3abd3da1-3e4d-48b3-af80-853d395313d2"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3598),
+                            Id = new Guid("7bb2be39-606a-4a15-a7ab-5063db95e727"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4540),
                             IdEstado = new Guid("141a0daa-47e8-49fe-8dea-0ee97e4db538"),
                             NumeroDDD = (byte)61,
                             Regioes = "Abrangência em todo o Distrito Federal e alguns municípios da Região Integrada de Desenvolvimento do Distrito Federal e Entorno"
                         },
                         new
                         {
-                            Id = new Guid("385f9187-739d-49bc-8914-1dbf883c1ecf"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3599),
+                            Id = new Guid("49da6561-e08b-47eb-b876-e9160df2b816"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4542),
                             IdEstado = new Guid("8c797ec8-ea24-4bc5-9288-56a6cb14a8ef"),
                             NumeroDDD = (byte)62,
                             Regioes = "Goiânia e Região Metropolitana/Anápolis/Niquelândia/Porangatu"
                         },
                         new
                         {
-                            Id = new Guid("2b52f423-b115-4a0d-9d5f-51ebdf7fea37"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3601),
+                            Id = new Guid("2ac85176-4291-4198-8133-f8f0d7c87f8d"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4546),
                             IdEstado = new Guid("7fdaaa4c-13ed-49d4-b1aa-ceaae53254b6"),
                             NumeroDDD = (byte)63,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("5cc42d37-dce8-4535-becd-530509a75b2e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3603),
+                            Id = new Guid("db7b16a0-95cf-40e7-b1ed-3b1ba41ad108"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4548),
                             IdEstado = new Guid("8c797ec8-ea24-4bc5-9288-56a6cb14a8ef"),
                             NumeroDDD = (byte)64,
                             Regioes = "Caldas Novas/Catalão/Itumbiara/Rio Verde"
                         },
                         new
                         {
-                            Id = new Guid("a110e050-c6ef-442e-aadd-55e9151ec437"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3605),
+                            Id = new Guid("62440b10-3d74-48d6-8cf2-e85cefd96d7b"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4550),
                             IdEstado = new Guid("786e47a5-f326-40bc-afb5-0af531e7af9f"),
                             NumeroDDD = (byte)65,
                             Regioes = "Cuiabá e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("04854654-7bba-4100-aee6-7ac5245050e8"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3607),
+                            Id = new Guid("a407bcbe-e3a1-462e-8db4-878ff2c7e0a0"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4552),
                             IdEstado = new Guid("786e47a5-f326-40bc-afb5-0af531e7af9f"),
                             NumeroDDD = (byte)66,
                             Regioes = "Rondonópolis/Sinop"
                         },
                         new
                         {
-                            Id = new Guid("441c0f76-c9ed-43b6-a8f5-8b454f174c2a"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3608),
+                            Id = new Guid("4ad7e51b-d434-465e-805d-f0d63a5a7e41"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4553),
                             IdEstado = new Guid("c4dc2412-b190-411a-8352-0a857b7e327b"),
                             NumeroDDD = (byte)67,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("197e3f1c-d3c5-4cf0-8927-8965adeaae51"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3610),
+                            Id = new Guid("a6099026-f5fd-44af-9f0b-36695d44f440"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4555),
                             IdEstado = new Guid("77df935a-ca53-4ffd-94ae-c197e016ccf0"),
                             NumeroDDD = (byte)68,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("41d561fc-5afe-44bb-a250-848d53d431e3"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3615),
+                            Id = new Guid("62313755-e43e-4b6c-a4aa-f7855cd39e9f"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4557),
                             IdEstado = new Guid("12405ad1-e3e5-43fd-9bfe-0c6fa4816105"),
                             NumeroDDD = (byte)69,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("62a78dda-1ce8-4911-8ab1-28d9a9ec072b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3617),
+                            Id = new Guid("f90537dc-cd52-4658-a0b3-7ba82398d18b"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4559),
                             IdEstado = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
                             NumeroDDD = (byte)71,
                             Regioes = "Salvador e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("b23f3b37-e61c-407f-bf42-1ba1455a5f05"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3619),
+                            Id = new Guid("5f12d41a-db6f-43a7-be1c-6676308b020e"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4564),
                             IdEstado = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
                             NumeroDDD = (byte)73,
                             Regioes = "Eunápolis/Ilhéus/Porto Seguro/Teixeira de Freitas"
                         },
                         new
                         {
-                            Id = new Guid("698c7336-83c6-4f79-a2a0-75bfd84a0612"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3621),
+                            Id = new Guid("409404d3-5ca6-4fef-af31-51a58481cf17"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4565),
                             IdEstado = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
                             NumeroDDD = (byte)74,
                             Regioes = "Irecê/Jacobina/Juazeiro/Xique-Xique"
                         },
                         new
                         {
-                            Id = new Guid("373001b7-7005-4ea8-bcca-09bf7fe0942a"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3623),
+                            Id = new Guid("443cc9c9-e854-4fcb-862d-2d4eb4e44489"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4567),
                             IdEstado = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
                             NumeroDDD = (byte)75,
                             Regioes = "Alagoinhas/Feira de Santana/Paulo Afonso/Valença"
                         },
                         new
                         {
-                            Id = new Guid("91d6f37a-8955-4165-95ff-619cc3204c5c"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3625),
+                            Id = new Guid("42a89b40-f4c2-4294-8164-2bf4254db8e0"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4569),
                             IdEstado = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
                             NumeroDDD = (byte)77,
                             Regioes = "Barreiras/Bom Jesus da Lapa/Guanambi/Vitória da Conquista"
                         },
                         new
                         {
-                            Id = new Guid("74ffc337-9ad0-4fdb-9241-0f0a31f92e7b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3627),
+                            Id = new Guid("c0630627-323d-47f0-9e7c-c2f55cecc2c0"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4571),
                             IdEstado = new Guid("6d2e386b-a450-4976-83ce-ed107120c9fb"),
                             NumeroDDD = (byte)79,
                             Regioes = "Abrangência em todo o estado "
                         },
                         new
                         {
-                            Id = new Guid("2b960d85-3a55-43b3-aac5-a9eab09cde6d"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3629),
+                            Id = new Guid("0583aa9f-e1f9-4492-b188-44445b037830"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4573),
                             IdEstado = new Guid("451ecb2b-0ba5-48c7-84ff-32772634c258"),
                             NumeroDDD = (byte)81,
                             Regioes = "Recife e Região Metropolitana/Caruaru"
                         },
                         new
                         {
-                            Id = new Guid("1c037db6-855b-413d-9aa8-7c45050cf37e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3633),
+                            Id = new Guid("6e3902d5-7847-449d-a12e-696ce5761a22"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4574),
                             IdEstado = new Guid("8f7ae6df-d6a5-4d86-8994-e64002ee557e"),
                             NumeroDDD = (byte)82,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("09a9ab5e-c61d-4a02-8046-7a244a412fb8"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3635),
+                            Id = new Guid("044b0cc3-cff1-4d71-98cd-d8d832df0fbe"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4576),
                             IdEstado = new Guid("d4fdba6b-ee4c-4c06-b8d7-7dcbbc0d02fa"),
                             NumeroDDD = (byte)83,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("0de34313-5e80-4233-a369-639883c38d3a"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3637),
+                            Id = new Guid("18a9b601-cb3c-42dd-b049-b4bed1eb96f5"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4581),
                             IdEstado = new Guid("dca93b97-5ef7-44ee-bfb4-5f63b0c72598"),
                             NumeroDDD = (byte)84,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("7d95620f-b6d6-409c-9101-155f63020280"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3639),
+                            Id = new Guid("298564f8-674e-4b2a-927f-7e4024200bad"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4583),
                             IdEstado = new Guid("38cdbdab-bc0b-4f2e-b561-500a1708d8da"),
                             NumeroDDD = (byte)85,
                             Regioes = "Fortaleza e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("b62b2ebb-5983-4779-937a-34cd069df00a"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3640),
+                            Id = new Guid("e5e40fd9-3dde-40b8-b577-2449711803f2"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4584),
                             IdEstado = new Guid("275002db-aa62-444e-a179-b801583c3568"),
                             NumeroDDD = (byte)86,
                             Regioes = "Teresina e alguns municípios da Região Integrada de Desenvolvimento da Grande Teresina/Parnaíba"
                         },
                         new
                         {
-                            Id = new Guid("9d2555e5-ddef-44bd-a1b7-25afb35ad0aa"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3807),
+                            Id = new Guid("fc155e39-58b1-484b-825b-d5de7c8ff016"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4586),
                             IdEstado = new Guid("451ecb2b-0ba5-48c7-84ff-32772634c258"),
                             NumeroDDD = (byte)87,
                             Regioes = "Garanhuns/Petrolina/Salgueiro/Serra Talhada"
                         },
                         new
                         {
-                            Id = new Guid("cc438caf-5a67-4720-8207-8021b3313abf"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3809),
+                            Id = new Guid("54217610-f222-4454-9d8f-0da6bb7b2d3c"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4588),
                             IdEstado = new Guid("38cdbdab-bc0b-4f2e-b561-500a1708d8da"),
                             NumeroDDD = (byte)88,
                             Regioes = "Juazeiro do Norte/Sobral"
                         },
                         new
                         {
-                            Id = new Guid("4e355170-85eb-4a78-bd15-f32a53eb5e02"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3811),
+                            Id = new Guid("a45f163c-896a-418e-be58-8580cbc7c007"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4590),
                             IdEstado = new Guid("275002db-aa62-444e-a179-b801583c3568"),
                             NumeroDDD = (byte)89,
                             Regioes = "Picos/Floriano"
                         },
                         new
                         {
-                            Id = new Guid("a8597729-c84e-4638-b90e-bcc5c96cb9ee"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3816),
+                            Id = new Guid("f9785991-5664-40a1-87b9-a6723f402860"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4592),
                             IdEstado = new Guid("06759cc3-cf92-49fe-9d98-a8eacb5ee621"),
                             NumeroDDD = (byte)91,
                             Regioes = "Belém e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("02e1ad04-8864-47ba-8c6f-b25b4de570a6"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3818),
+                            Id = new Guid("5de53de0-8720-48a2-a008-49a5025d7045"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4593),
                             IdEstado = new Guid("2b3cb7d6-f792-4ae6-b068-38da911997d8"),
                             NumeroDDD = (byte)92,
                             Regioes = "Manaus e Região Metropolitana/Parintins"
                         },
                         new
                         {
-                            Id = new Guid("c4586c16-1d0e-4758-b78a-c96de16c987e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3820),
+                            Id = new Guid("41f6321f-5901-4f50-9a0a-618846dcdcff"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4598),
                             IdEstado = new Guid("06759cc3-cf92-49fe-9d98-a8eacb5ee621"),
                             NumeroDDD = (byte)93,
                             Regioes = "Santarém/Altamira"
                         },
                         new
                         {
-                            Id = new Guid("69822f11-508f-4abf-aacd-fa157a1a5d24"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3821),
+                            Id = new Guid("bfb6c141-0e59-4c34-b6a0-cba4e2c48258"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4600),
                             IdEstado = new Guid("06759cc3-cf92-49fe-9d98-a8eacb5ee621"),
                             NumeroDDD = (byte)94,
                             Regioes = "Marabá"
                         },
                         new
                         {
-                            Id = new Guid("48f1fc6a-ec77-49e7-acfb-0877cac2f43b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3823),
+                            Id = new Guid("f0a8bcae-b604-4875-943c-a2337414afa8"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4602),
                             IdEstado = new Guid("a850fb53-9f5b-449e-b691-d084f8b5a402"),
                             NumeroDDD = (byte)95,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("42b7d2ec-2ac0-4453-ac13-8f33efed2ce8"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3825),
+                            Id = new Guid("81dddcff-07d3-4582-a4f0-d4d85acb1537"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4603),
                             IdEstado = new Guid("489e8c02-00cc-4113-8dab-8e44ead66543"),
                             NumeroDDD = (byte)96,
                             Regioes = "Abrangência em todo o estado"
                         },
                         new
                         {
-                            Id = new Guid("29cdd496-b0b4-4ab7-902f-0e33cdd031d7"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3827),
+                            Id = new Guid("eebda4fc-9c0c-4d06-ac92-951413f7ee92"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4605),
                             IdEstado = new Guid("2b3cb7d6-f792-4ae6-b068-38da911997d8"),
                             NumeroDDD = (byte)97,
                             Regioes = "Abrangência no interior do estado"
                         },
                         new
                         {
-                            Id = new Guid("057d7dfc-6b5d-4940-80e3-f1135b8ac616"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3829),
+                            Id = new Guid("c5df78d0-1ea4-494d-a9ed-c1e14990c5e0"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4607),
                             IdEstado = new Guid("7451a52c-8460-4f6a-bca6-7573b9a44759"),
                             NumeroDDD = (byte)98,
                             Regioes = "São Luís e Região Metropolitana"
                         },
                         new
                         {
-                            Id = new Guid("952e2874-a022-41c5-9ebb-4ac0439db43b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3833),
+                            Id = new Guid("f49807a1-8169-4069-88d6-894205c39daa"),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4609),
                             IdEstado = new Guid("7451a52c-8460-4f6a-bca6-7573b9a44759"),
                             NumeroDDD = (byte)99,
                             Regioes = "Caxias/Codó/Imperatriz"
@@ -650,7 +646,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("77df935a-ca53-4ffd-94ae-c197e016ccf0"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3142),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4199),
                             Descricao = "Acre",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "AC"
@@ -658,7 +654,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("8f7ae6df-d6a5-4d86-8994-e64002ee557e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3199),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4201),
                             Descricao = "Alagoas",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "AL"
@@ -666,7 +662,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("489e8c02-00cc-4113-8dab-8e44ead66543"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3201),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4203),
                             Descricao = "Amapa",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "AP"
@@ -674,7 +670,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("2b3cb7d6-f792-4ae6-b068-38da911997d8"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3203),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4205),
                             Descricao = "Amazonas",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "AM"
@@ -682,7 +678,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("3a8ca4e0-eb66-452c-b4d5-dd4b428f3cbf"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3206),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4207),
                             Descricao = "Bahia",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "BA"
@@ -690,7 +686,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("38cdbdab-bc0b-4f2e-b561-500a1708d8da"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3209),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4209),
                             Descricao = "Ceara",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "CE"
@@ -698,7 +694,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("20792100-80af-49a8-8195-f7c36441c38d"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3211),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4211),
                             Descricao = "Espirito Santo",
                             IdRegiao = new Guid("6fb578f8-5176-4906-a805-3a100adde0c9"),
                             Uf = "ES"
@@ -706,7 +702,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("8c797ec8-ea24-4bc5-9288-56a6cb14a8ef"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3331),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4213),
                             Descricao = "Goias",
                             IdRegiao = new Guid("8b985725-487b-4a32-92a5-cb708f44c54b"),
                             Uf = "GO"
@@ -714,7 +710,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("7451a52c-8460-4f6a-bca6-7573b9a44759"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3334),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4215),
                             Descricao = "Maranhao",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "MA"
@@ -722,7 +718,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("786e47a5-f326-40bc-afb5-0af531e7af9f"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3337),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4217),
                             Descricao = "Mato Grosso",
                             IdRegiao = new Guid("8b985725-487b-4a32-92a5-cb708f44c54b"),
                             Uf = "MT"
@@ -730,7 +726,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("c4dc2412-b190-411a-8352-0a857b7e327b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3339),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4219),
                             Descricao = "Mato Grosso do Sul",
                             IdRegiao = new Guid("8b985725-487b-4a32-92a5-cb708f44c54b"),
                             Uf = "MS"
@@ -738,7 +734,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("3b72bc3f-4613-4313-963c-9621db443e32"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3341),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4220),
                             Descricao = "Minas Gerais",
                             IdRegiao = new Guid("6fb578f8-5176-4906-a805-3a100adde0c9"),
                             Uf = "MG"
@@ -746,7 +742,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("06759cc3-cf92-49fe-9d98-a8eacb5ee621"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3343),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4222),
                             Descricao = "Para",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "PA"
@@ -754,7 +750,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("d4fdba6b-ee4c-4c06-b8d7-7dcbbc0d02fa"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3346),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4224),
                             Descricao = "Paraiba",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "PB"
@@ -762,7 +758,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("ef7e5a58-45a2-4b80-8e13-fdeefb2f5a5e"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3349),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4226),
                             Descricao = "Parana",
                             IdRegiao = new Guid("667589e6-12e3-44de-86cb-141058365c78"),
                             Uf = "PR"
@@ -770,7 +766,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("451ecb2b-0ba5-48c7-84ff-32772634c258"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3351),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4228),
                             Descricao = "Pernambuco",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "PE"
@@ -778,7 +774,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("275002db-aa62-444e-a179-b801583c3568"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3354),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4230),
                             Descricao = "Piaui",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "PI"
@@ -786,7 +782,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("3b0458c6-5eff-4342-bd53-4591d7c006de"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3357),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4232),
                             Descricao = "Rio de Janeiro",
                             IdRegiao = new Guid("6fb578f8-5176-4906-a805-3a100adde0c9"),
                             Uf = "RJ"
@@ -794,7 +790,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("dca93b97-5ef7-44ee-bfb4-5f63b0c72598"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3359),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4234),
                             Descricao = "Rio Grande do Norte",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "RN"
@@ -802,7 +798,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("6b57ce63-eb3a-4c73-8b59-8098e6862d48"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3361),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4236),
                             Descricao = "Rio Grande do Sul",
                             IdRegiao = new Guid("667589e6-12e3-44de-86cb-141058365c78"),
                             Uf = "RS"
@@ -810,7 +806,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("12405ad1-e3e5-43fd-9bfe-0c6fa4816105"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3363),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4237),
                             Descricao = "Rondonia",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "RO"
@@ -818,7 +814,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("a850fb53-9f5b-449e-b691-d084f8b5a402"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3367),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4239),
                             Descricao = "Roraima",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "RR"
@@ -826,7 +822,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("dbb01ebc-4776-4f72-b630-7b249d81c440"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3369),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4241),
                             Descricao = "Santa Catarina",
                             IdRegiao = new Guid("667589e6-12e3-44de-86cb-141058365c78"),
                             Uf = "SC"
@@ -834,7 +830,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("5e684315-735e-4c8e-a508-8df50649dc1d"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3371),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4243),
                             Descricao = "Sao Paulo",
                             IdRegiao = new Guid("6fb578f8-5176-4906-a805-3a100adde0c9"),
                             Uf = "SP"
@@ -842,7 +838,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("6d2e386b-a450-4976-83ce-ed107120c9fb"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3373),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4245),
                             Descricao = "Sergipe",
                             IdRegiao = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
                             Uf = "SE"
@@ -850,7 +846,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("7fdaaa4c-13ed-49d4-b1aa-ceaae53254b6"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3374),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4246),
                             Descricao = "Tocantins",
                             IdRegiao = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
                             Uf = "TO"
@@ -858,7 +854,7 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("141a0daa-47e8-49fe-8dea-0ee97e4db538"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(3376),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4248),
                             Descricao = "Distrito Federal",
                             IdRegiao = new Guid("8b985725-487b-4a32-92a5-cb708f44c54b"),
                             Uf = "DF"
@@ -886,31 +882,31 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         new
                         {
                             Id = new Guid("8b985725-487b-4a32-92a5-cb708f44c54b"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(2794),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(3981),
                             Descricao = "Centro-oeste"
                         },
                         new
                         {
                             Id = new Guid("6fb578f8-5176-4906-a805-3a100adde0c9"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(2807),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(3996),
                             Descricao = "Sudeste"
                         },
                         new
                         {
                             Id = new Guid("78fa8876-6c2d-4a09-b981-f77538f18fbb"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(2810),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(3998),
                             Descricao = "Nordeste"
                         },
                         new
                         {
                             Id = new Guid("667589e6-12e3-44de-86cb-141058365c78"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(2812),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(3999),
                             Descricao = "Sul"
                         },
                         new
                         {
                             Id = new Guid("91ea2869-3fb0-4c39-8583-f420f8d48fa5"),
-                            DataCriacao = new DateTime(2024, 5, 26, 0, 26, 14, 390, DateTimeKind.Local).AddTicks(2813),
+                            DataCriacao = new DateTime(2024, 5, 26, 21, 14, 48, 388, DateTimeKind.Local).AddTicks(4002),
                             Descricao = "Norte"
                         });
                 });
@@ -923,7 +919,28 @@ namespace TechChallengeFiap.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.OwnsOne("TechChallengeFiap.Domain.ValueObjects.Email", "Email", b1 =>
+                        {
+                            b1.Property<Guid>("ContatoId")
+                                .HasColumnType("uniqueidentifier");
+
+                            b1.Property<string>("Endereco")
+                                .IsRequired()
+                                .HasColumnType("VARCHAR(50)")
+                                .HasColumnName("Email");
+
+                            b1.HasKey("ContatoId");
+
+                            b1.ToTable("Contatos");
+
+                            b1.WithOwner()
+                                .HasForeignKey("ContatoId");
+                        });
+
                     b.Navigation("DDD");
+
+                    b.Navigation("Email")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TechChallengeFiap.Domain.Entities.DDD", b =>
