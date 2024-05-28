@@ -8,6 +8,7 @@ namespace TechChallengeFiap.Domain.Models.Contatos
         public Guid Id { get; set; }
 
         [Required]
+        [DeniedValues(null, "", "string")]
         public string? Nome { get; set; }
 
         [Required]

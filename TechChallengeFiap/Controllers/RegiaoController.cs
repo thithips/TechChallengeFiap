@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TechChallengeFiap.Domain.Interfaces.Service;
+using TechChallengeFiap.Domain.Models.Regiao;
 
 namespace TechChallengeFiap.Application.Controllers
 {
@@ -15,7 +15,13 @@ namespace TechChallengeFiap.Application.Controllers
             _regiaoService = regiaoService ?? throw new ArgumentNullException(nameof(regiaoService));
         }
 
+        /// <summary>
+        /// Retorna todas as regiões cadastrada na base de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType<IEnumerable<RegiaoViewModel>>(200)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> BuscarTodos()
         {
             try
