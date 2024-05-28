@@ -1,4 +1,6 @@
-﻿using TechChallengeFiap.Domain.ValueObjects;
+﻿using TechChallengeFiap.Domain.Exceptions;
+using TechChallengeFiap.Domain.Validations;
+using TechChallengeFiap.Domain.ValueObjects;
 
 namespace TechChallengeFiap.Domain.Entities
 {
@@ -19,10 +21,12 @@ namespace TechChallengeFiap.Domain.Entities
             IdDDD = ddd.Id;
 
             if (string.IsNullOrEmpty(Nome))
-                throw new Exception("Nome em branco! Não é possível criar instância de Cliente");
+                throw new DomainException("Nome em branco! Não é possível criar instância de Cliente");
 
             if (!AtribuirEmail(email))
-                throw new Exception("E-mail Inválido! Não é possível criar instância de Cliente");
+                throw new DomainException("E-mail Inválido! Não é possível criar instância de Cliente");
+
+            Validar();
         }
 
         public bool AtribuirEmail(string enderecoEmail)
@@ -35,9 +39,12 @@ namespace TechChallengeFiap.Domain.Entities
 
         public void AlterarTelefone(DDD ddd, string telefone)
         {
+            AssertionConcern.ValidarSeDiferente("^[9]{0,1}[0-9]{8}$", telefone, "Valor inválido para o campo telefone.");
+
             DDD = ddd;
             IdDDD = ddd.Id;
             Telefone = telefone;
+
         }
 
         public void Alterar(string nome, string email, string telefone, DDD ddd)
@@ -47,7 +54,15 @@ namespace TechChallengeFiap.Domain.Entities
             IdDDD = ddd.Id;
 
             if(Email.Endereco != email && !AtribuirEmail(email))
-                throw new Exception("E-mail Inválido! Não é possível criar instância de Cliente");
+                throw new DomainException("E-mail Inválido! Não é possível criar instância de Cliente");
+
+            Validar();
+        }
+
+        public void Validar()
+        {
+            AssertionConcern.ValidarSeDiferente("^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\\s*?|(?:[A-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð'][^\\s]*\\s*?)(?!.*[ ]$))+$", Nome, "Valor inválido para o campo nome.");
+            AssertionConcern.ValidarSeDiferente("^[9]{0,1}[0-9]{8}$", Telefone, "Valor inválido para o campo telefone.");
         }
     }
 }
