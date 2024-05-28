@@ -10,12 +10,22 @@ namespace TechChallengeFiap.Services
         private readonly IContatoRepository _repository;
         private readonly IDDDRepository _dddRepository;
 
+        /// <summary>
+        /// Construtor do método
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="dddRepository"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public ContatoService(IContatoRepository repo, IDDDRepository dddRepository)
         {
             _repository = repo ?? throw new ArgumentNullException(nameof(repo));
             _dddRepository = dddRepository ?? throw new ArgumentNullException(nameof(dddRepository));
         }
 
+        /// <summary>
+        /// Busca todos os contatos
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<ContatoViewModel>> BuscarTodos()
         {
             var entities = await _repository.SelecionarTudo();
@@ -28,12 +38,22 @@ namespace TechChallengeFiap.Services
             });
         }
 
+        /// <summary>
+        /// Busca um contato específico por ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ContatoViewModel> BuscarPorId(Guid id)
         {
             var entity = await _repository.SelecionarPorId(id);
             return new ContatoViewModel { Id = entity.Id, Email = entity.Email.Endereco, Nome = entity.Nome, Telefone = entity.DDD.NumeroDDD + entity.Telefone };
         }
 
+        /// <summary>
+        /// Busca vários contatos por DDD 
+        /// </summary>
+        /// <param name="idDDD"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<ContatoViewModel>> BuscarPorDDD(Guid idDDD)
         {
             var entities = await _repository.BuscarVarios(x => x.IdDDD == idDDD);
@@ -46,6 +66,11 @@ namespace TechChallengeFiap.Services
             });
         }
 
+        /// <summary>
+        /// Busca vários contatos por região
+        /// </summary>
+        /// <param name="idRegiao"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<ContatoViewModel>> BuscarPorRegiao(Guid idRegiao)
         {
             var entities = await _repository.BuscarVarios(x => x.DDD.Estado.Regiao.Id == idRegiao);
@@ -58,6 +83,11 @@ namespace TechChallengeFiap.Services
             });
         }
 
+        /// <summary>
+        /// Cadastra um novo contato
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task Cadastrar(ContatoInputModel model)
         {
             var ddd = await _dddRepository.Buscar(x => x.NumeroDDD == int.Parse(model.Telefone.Substring(0, 2)));
@@ -67,6 +97,11 @@ namespace TechChallengeFiap.Services
             await _repository.Incluir(entity);
         }
 
+        /// <summary>
+        /// Altera um contato a partir do ID especificado
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task Alterar(ContatoUpdateInputModel model)
         {
             var entity = await _repository.SelecionarPorId(model.Id);
@@ -83,6 +118,11 @@ namespace TechChallengeFiap.Services
             await _repository.Alterar(entity);
         }
 
+        /// <summary>
+        /// Deleta um contato a partir do ID especificado
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task Deletar(Guid id)
         {
             var entity = await _repository.SelecionarPorId(id);

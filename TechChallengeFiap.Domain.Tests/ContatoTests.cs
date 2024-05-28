@@ -6,7 +6,8 @@ namespace TechChallengeFiap.Domain.Tests
 {
     public class ContatoTests
     {
-        [Fact]
+        [Fact(DisplayName = "Validando se os dados informados estão incorretos na inserção")]
+        [Trait("Contato", "Validando contatos")]
         public void Contato_Cadastro_ValorInvalido()
         {
             Assert.Throws<DomainException>(() => new Contato(
@@ -22,7 +23,8 @@ namespace TechChallengeFiap.Domain.Tests
                  new DDD(11, new Guid(), "")));
         }
 
-        [Fact]
+        [Fact(DisplayName = "Validando se os dados informados estão incorretos na alteração")]
+        [Trait("Contato", "Validando contatos")]
         public void Contato_Alterar_ValorInvalido()
         {
             Contato contato = new Contato(
@@ -38,7 +40,8 @@ namespace TechChallengeFiap.Domain.Tests
                  new DDD(11, new Guid(), "")));
         }
 
-        [Fact]
+        [Fact(DisplayName = "Validando se o telefone informado na alteração é inválido")]
+        [Trait("Contato", "Validando contatos")]
         public void Contato_AlterarTelefone_ValorInvalido()
         {
             Contato contato = new Contato(
@@ -52,7 +55,8 @@ namespace TechChallengeFiap.Domain.Tests
                 "meu numero super alterado"));
         }
         
-        [Fact]
+        [Fact(DisplayName = "Validando se o telefone informado na alteração é válido")]
+        [Trait("Contato", "Validando contatos")]
         public void Contato_AlterarTelefone_ValorAlterado()
         {
             Contato contato = new Contato(

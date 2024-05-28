@@ -9,9 +9,18 @@ namespace TechChallengeFiap.Services
     {
         private readonly IEstadoRepository _estadoRepository;
 
+        /// <summary>
+        /// Construtor do método
+        /// </summary>
+        /// <param name="estadoRepository"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public DDDService(IEstadoRepository estadoRepository)
             => _estadoRepository = estadoRepository ?? throw new ArgumentNullException(nameof(estadoRepository));
 
+        /// <summary>
+        /// Busca todos os DDD's
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<EstadoDDDViewModel>> BuscarTodos()
             => (await _estadoRepository.BuscarEstadosDDDs()).Select(x => new EstadoDDDViewModel
             {
