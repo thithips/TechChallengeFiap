@@ -15,7 +15,13 @@ namespace TechChallengeFiap.Application.Controllers
             _contatoService = contatoService ?? throw new ArgumentNullException(nameof(contatoService));
         }
 
+        /// <summary>
+        /// Retorna todos os contatos cadastrados na base de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType<IEnumerable<ContatoViewModel>>(200)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> BuscarTodos()
         {
             try
@@ -28,7 +34,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todos os contatos de uma regiao
+        /// </summary>
+        /// <param name="idRegiao">Id da regiao a ser pesquisada</param>
+        /// <returns></returns>
         [HttpGet("Regiao")]
+        [ProducesResponseType<string>(400)]
+        [ProducesResponseType<IEnumerable<ContatoViewModel>>(200)]
         public async Task<IActionResult> BuscarPorRegiao(Guid idRegiao)
         {
             try
@@ -41,7 +54,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna todos os contatos com o ddd informado
+        /// </summary>
+        /// <param name="idDDD">Id do ddd a ser pesquisado</param>
+        /// <returns></returns>
         [HttpGet("DDD")]
+        [ProducesResponseType<IEnumerable<ContatoViewModel>>(200)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> BuscarPorDDD(Guid idDDD)
         {
             try
@@ -54,7 +74,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Retorna os dados de um contato
+        /// </summary>
+        /// <param name="id">Id do contato que será visualizado</param>
+        /// <returns></returns>
         [HttpGet("{id:Guid}")]
+        [ProducesResponseType<ContatoViewModel>(200)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> BuscarPorId(Guid id)
         {
             try
@@ -67,7 +94,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastra um novo contato na base de dados
+        /// </summary>
+        /// <param name="model">Dados do contato a ser cadastrado</param>
+        /// <returns></returns>
         [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> Cadastrar(ContatoInputModel model)
         {
             try
@@ -81,7 +115,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Altera as informações de um contato
+        /// </summary>
+        /// <param name="model">Dados do contato a ser alterado</param>
+        /// <returns></returns>
         [HttpPut]
+        [ProducesResponseType(204)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> Alterar(ContatoUpdateInputModel model)
         {
             try
@@ -95,7 +136,14 @@ namespace TechChallengeFiap.Application.Controllers
             }
         }
 
+        /// <summary>
+        /// Delete o contato conforme o id informado
+        /// </summary>
+        /// <param name="id">Id do contato a ser excluido</param>
+        /// <returns></returns>
         [HttpDelete]
+        [ProducesResponseType(204)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> Deletar(Guid id)
         {
             try

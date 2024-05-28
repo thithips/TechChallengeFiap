@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechChallengeFiap.Domain.Interfaces.Service;
+using TechChallengeFiap.Domain.Models.Estados;
 
 namespace TechChallengeFiap.Application.Controllers
 {
@@ -11,10 +12,16 @@ namespace TechChallengeFiap.Application.Controllers
 
         public DDDController(IDDDService dddService)
         {
-            _dDDService = dddService;
+            _dDDService = dddService ?? throw new ArgumentNullException(nameof(dddService));
         }
 
+        /// <summary>
+        /// Retorna todos os DDDs cadastrados na base de dados
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
+        [ProducesResponseType<IEnumerable<EstadoDDDViewModel>>(200)]
+        [ProducesResponseType<string>(400)]
         public async Task<IActionResult> BuscarTodos()
         {
             try
