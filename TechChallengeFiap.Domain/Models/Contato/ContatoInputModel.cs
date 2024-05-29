@@ -4,15 +4,15 @@ namespace TechChallengeFiap.Domain.Models.Contatos
 {
     public class ContatoInputModel
     {
-        [Required]
+        [Required(ErrorMessage = "O campo {0} é obrigatorio")]
         [DeniedValues("string", null, "")]
-        public string? Nome { get; set; }
+        public required string Nome { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "O campo {0} é obrigatorio")]
         [EmailAddress]
-        public string? Email { get; set; }
+        public required string Email { get; set; }
 
-        [Required]
-        public string? Telefone { get; set; }
+        [Required(ErrorMessage = "O campo {0} é obrigatorio")]
+        public required string Telefone { get; set; }
     }
 }
