@@ -1,6 +1,5 @@
 using TechChallengeFiap.Domain.Entities;
 using TechChallengeFiap.Domain.Exceptions;
-using TechChallengeFiap.Domain.ValueObjects;
 
 namespace TechChallengeFiap.Domain.Tests
 {
