@@ -1,4 +1,5 @@
-﻿using TechChallengeFiap.Domain.Entities;
+﻿using TechChallengeFiap.Core;
+using TechChallengeFiap.Domain.Entities;
 using TechChallengeFiap.Domain.Interfaces.Repository;
 using TechChallengeFiap.Domain.Interfaces.Service;
 using TechChallengeFiap.Domain.Models.Contatos;
@@ -11,7 +12,7 @@ namespace TechChallengeFiap.Services
         private readonly IDDDRepository _dddRepository;
 
         /// <summary>
-        /// Construtor do método
+        /// Construtor do metodo
         /// </summary>
         /// <param name="repo"></param>
         /// <param name="dddRepository"></param>
@@ -34,23 +35,23 @@ namespace TechChallengeFiap.Services
                 Id = x.Id,
                 Email = x.Email.Endereco,
                 Nome = x.Nome,
-                Telefone = x.DDD.NumeroDDD + x.Telefone
+                Telefone = x.DDD!.NumeroDDD + x.Telefone
             });
         }
 
         /// <summary>
-        /// Busca um contato específico por ID
+        /// Busca um contato especifico por ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public async Task<ContatoViewModel> BuscarPorId(Guid id)
         {
             var entity = await _repository.SelecionarPorId(id);
-            return new ContatoViewModel { Id = entity.Id, Email = entity.Email.Endereco, Nome = entity.Nome, Telefone = entity.DDD.NumeroDDD + entity.Telefone };
+            return new ContatoViewModel { Id = entity.Id, Email = entity.Email.Endereco, Nome = entity.Nome, Telefone = entity.DDD!.NumeroDDD + entity.Telefone };
         }
 
         /// <summary>
-        /// Busca vários contatos por DDD 
+        /// Busca varios contatos por DDD 
         /// </summary>
         /// <param name="idDDD"></param>
         /// <returns></returns>
@@ -62,24 +63,24 @@ namespace TechChallengeFiap.Services
                 Id = x.Id,
                 Email = x.Email.Endereco,
                 Nome = x.Nome,
-                Telefone = x.DDD.NumeroDDD + x.Telefone
+                Telefone = x.DDD!.NumeroDDD + x.Telefone
             });
         }
 
         /// <summary>
-        /// Busca vários contatos por região
+        /// Busca varios contatos por regiao
         /// </summary>
         /// <param name="idRegiao"></param>
         /// <returns></returns>
         public async Task<IEnumerable<ContatoViewModel>> BuscarPorRegiao(Guid idRegiao)
         {
-            var entities = await _repository.BuscarVarios(x => x.DDD.Estado.Regiao.Id == idRegiao);
+            var entities = await _repository.BuscarVarios(x => x.DDD!.Estado!.Regiao!.Id == idRegiao);
             return entities.Select(x => new ContatoViewModel
             {
                 Id = x.Id,
                 Email = x.Email.Endereco,
                 Nome = x.Nome,
-                Telefone = x.DDD.NumeroDDD + x.Telefone
+                Telefone = x.DDD!.NumeroDDD + x.Telefone
             });
         }
 
@@ -95,6 +96,13 @@ namespace TechChallengeFiap.Services
             Contato entity = new(model.Nome, model.Email, model.Telefone.Substring(2), ddd);
 
             await _repository.Incluir(entity);
+
+            var emailMessage = new EmailModel
+            {
+                Email = model.Email,
+                Subject = "Bem-vindo",
+                Message = $"Olá {model.Nome}, seja bem-vindo!"
+            };
         }
 
         /// <summary>

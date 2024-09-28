@@ -4,16 +4,18 @@ namespace TechChallengeFiap.Domain.Tests
 {
     public class EmailTests
     {
-        [Fact(DisplayName = "Validando se o e-mail informado está com o valor inválido")]
-        [Trait("E-mail","Validando e-mail")]
-        public void Email_Cadastro_ValorInvalido()
+        [Theory(DisplayName = "Validando se o e-mail informado esta com o valor invalido")]
+        [Trait("E-mail", "Validando e-mail")]
+        [InlineData("thiagoalvescebraspe.org.br")]
+        [InlineData("thiagoalvescebraspe@.org.br")]
+        public void Email_Cadastro_ValorInvalido(string email)
         {
-            var email = new Email("thiagoalvescebraspe.org.br");
+            var emailResult = new Email(email);
 
-            Assert.False(email.Validar());
+            Assert.False(emailResult.Validar());
         }
 
-        [Fact(DisplayName = "Validando se o e-mail informado está com o valor válido")]
+        [Fact(DisplayName = "Validando se o e-mail informado esta com o valor valido")]
         [Trait("E-mail", "Validando e-mail")]
         public void Email_Cadastro_ValorValido()
         {
