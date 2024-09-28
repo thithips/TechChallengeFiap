@@ -11,9 +11,7 @@ namespace TechChallengeFiap.Application.Controllers
         private readonly IContatoService _contatoService;
 
         public ContatoController(IContatoService contatoService)
-        {
-            _contatoService = contatoService ?? throw new ArgumentNullException(nameof(contatoService));
-        }
+            => _contatoService = contatoService ?? throw new ArgumentNullException(nameof(contatoService));
 
         /// <summary>
         /// Retorna todos os contatos cadastrados na base de dados

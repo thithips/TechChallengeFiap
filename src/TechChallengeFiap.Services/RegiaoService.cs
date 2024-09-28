@@ -9,17 +9,15 @@ namespace TechChallengeFiap.Services
         private readonly IRegiaoRepository _regiaoRepository;
 
         /// <summary>
-        /// Construtor do método
+        /// Construtor do metodo
         /// </summary>
         /// <param name="regiaoRepository"></param>
         /// <exception cref="ArgumentNullException"></exception>
         public RegiaoService(IRegiaoRepository regiaoRepository)
-        {
-            _regiaoRepository = regiaoRepository ?? throw new ArgumentNullException(nameof(regiaoRepository));
-        }
+        => _regiaoRepository = regiaoRepository ?? throw new ArgumentNullException(nameof(regiaoRepository));
 
         /// <summary>
-        /// Busca todas as regiões
+        /// Busca todas as regioes
         /// </summary>
         /// <returns></returns>
         public async Task<IEnumerable<RegiaoViewModel>> BuscarTodos()

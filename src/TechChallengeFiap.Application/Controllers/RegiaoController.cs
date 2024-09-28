@@ -11,9 +11,8 @@ namespace TechChallengeFiap.Application.Controllers
         private readonly IRegiaoService _regiaoService;
 
         public RegiaoController(IRegiaoService regiaoService)
-        {
-            _regiaoService = regiaoService ?? throw new ArgumentNullException(nameof(regiaoService));
-        }
+        =>  _regiaoService = regiaoService ?? throw new ArgumentNullException(nameof(regiaoService));
+        
 
         /// <summary>
         /// Retorna todas as regiões cadastrada na base de dados

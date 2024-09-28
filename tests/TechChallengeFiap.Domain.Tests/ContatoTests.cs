@@ -5,7 +5,7 @@ namespace TechChallengeFiap.Domain.Tests
 {
     public class ContatoTests
     {
-        [Fact(DisplayName = "Validando se os dados informados estão incorretos na inserção")]
+        [Fact(DisplayName = "Validando se os dados informados estao incorretos na insercao")]
         [Trait("Contato", "Validando contatos")]
         public void Contato_Cadastro_ValorInvalido()
         {
@@ -22,7 +22,7 @@ namespace TechChallengeFiap.Domain.Tests
                  new DDD(11, new Guid(), "")));
         }
 
-        [Fact(DisplayName = "Validando se os dados informados estão incorretos na alteração")]
+        [Fact(DisplayName = "Validando se os dados informados estão incorretos na alteracao")]
         [Trait("Contato", "Validando contatos")]
         public void Contato_Alterar_ValorInvalido()
         {
@@ -39,7 +39,7 @@ namespace TechChallengeFiap.Domain.Tests
                  new DDD(11, new Guid(), "")));
         }
 
-        [Fact(DisplayName = "Validando se o telefone informado na alteração é inválido")]
+        [Fact(DisplayName = "Validando se o telefone informado na alteracao e invalido")]
         [Trait("Contato", "Validando contatos")]
         public void Contato_AlterarTelefone_ValorInvalido()
         {
@@ -54,7 +54,7 @@ namespace TechChallengeFiap.Domain.Tests
                 "meu numero super alterado"));
         }
         
-        [Fact(DisplayName = "Validando se o telefone informado na alteração é válido")]
+        [Fact(DisplayName = "Validando se o telefone informado na alteracao e valido")]
         [Trait("Contato", "Validando contatos")]
         public void Contato_AlterarTelefone_ValorAlterado()
         {
