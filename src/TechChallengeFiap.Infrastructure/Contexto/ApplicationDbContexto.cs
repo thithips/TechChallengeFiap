@@ -24,5 +24,7 @@ namespace TechChallengeFiap.Infrastructure.Contexto
             EstadoSeed.SeedsEstados(modelBuilder);
             DDDSeed.SeedsDDDs(modelBuilder);
         }
+        
+        //add-migration adicionaBaseInicial; update-database
     }
 }
