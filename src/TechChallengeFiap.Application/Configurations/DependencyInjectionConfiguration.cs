@@ -33,6 +33,7 @@ namespace TechChallengeFiap.Application.Configurations
             services.AddScoped<IContatoService, ContatoService>();
             services.AddScoped<IDDDService, DDDService>();
             services.AddScoped<IRegiaoService, RegiaoService>();
+            services.AddScoped<IRabbitMQMessageSender, RabbitMQMessageSender>();
         }
     }
 }
