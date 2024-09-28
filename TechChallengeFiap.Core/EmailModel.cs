@@ -1,6 +1,6 @@
 ﻿namespace TechChallengeFiap.Core
 {
-    public class EmailModel
+    public class EmailModel : BaseMessage
     {
         public string Email { get; set; }
         public string Subject { get; set; }

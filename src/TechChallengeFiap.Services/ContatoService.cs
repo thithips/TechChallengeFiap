@@ -1,8 +1,11 @@
-﻿using TechChallengeFiap.Core;
+﻿using System.Text.Json;
+using System.Text;
+using TechChallengeFiap.Core;
 using TechChallengeFiap.Domain.Entities;
 using TechChallengeFiap.Domain.Interfaces.Repository;
 using TechChallengeFiap.Domain.Interfaces.Service;
 using TechChallengeFiap.Domain.Models.Contatos;
+using RabbitMQ.Client;
 
 namespace TechChallengeFiap.Services
 {
@@ -10,6 +13,7 @@ namespace TechChallengeFiap.Services
     {
         private readonly IContatoRepository _repository;
         private readonly IDDDRepository _dddRepository;
+        private IRabbitMQMessageSender _messageSender;
 
         /// <summary>
         /// Construtor do metodo
@@ -17,10 +21,11 @@ namespace TechChallengeFiap.Services
         /// <param name="repo"></param>
         /// <param name="dddRepository"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public ContatoService(IContatoRepository repo, IDDDRepository dddRepository)
+        public ContatoService(IContatoRepository repo, IDDDRepository dddRepository, IRabbitMQMessageSender messageSender)
         {
             _repository = repo ?? throw new ArgumentNullException(nameof(repo));
             _dddRepository = dddRepository ?? throw new ArgumentNullException(nameof(dddRepository));
+            _messageSender = messageSender;
         }
 
         /// <summary>
@@ -103,6 +108,8 @@ namespace TechChallengeFiap.Services
                 Subject = "Bem-vindo",
                 Message = $"Olá {model.Nome}, seja bem-vindo!"
             };
+
+            _messageSender.SendMessage(emailMessage);
         }
 
         /// <summary>
