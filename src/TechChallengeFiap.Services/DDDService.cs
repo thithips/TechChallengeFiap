@@ -5,7 +5,7 @@ using TechChallengeFiap.Domain.Models.Estados;
 
 namespace TechChallengeFiap.Services
 {
-    public class DDDService : IDDDService
+    public class DDDService : BaseService, IDDDService
     {
         private readonly IEstadoRepository _estadoRepository;
 
@@ -14,7 +14,7 @@ namespace TechChallengeFiap.Services
         /// </summary>
         /// <param name="estadoRepository"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public DDDService(IEstadoRepository estadoRepository)
+        public DDDService(IEstadoRepository estadoRepository, IUnitOfWork unitOfWork) : base(unitOfWork)
             => _estadoRepository = estadoRepository ?? throw new ArgumentNullException(nameof(estadoRepository));
 
         /// <summary>

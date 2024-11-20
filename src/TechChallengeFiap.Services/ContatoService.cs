@@ -1,15 +1,12 @@
-﻿using System.Text.Json;
-using System.Text;
-using TechChallengeFiap.Core;
+﻿using TechChallengeFiap.Core;
 using TechChallengeFiap.Domain.Entities;
 using TechChallengeFiap.Domain.Interfaces.Repository;
 using TechChallengeFiap.Domain.Interfaces.Service;
 using TechChallengeFiap.Domain.Models.Contatos;
-using RabbitMQ.Client;
 
 namespace TechChallengeFiap.Services
 {
-    public class ContatoService : IContatoService
+    public class ContatoService : BaseService, IContatoService
     {
         private readonly IContatoRepository _repository;
         private readonly IDDDRepository _dddRepository;
@@ -21,7 +18,7 @@ namespace TechChallengeFiap.Services
         /// <param name="repo"></param>
         /// <param name="dddRepository"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public ContatoService(IContatoRepository repo, IDDDRepository dddRepository, IRabbitMQMessageSender messageSender)
+        public ContatoService(IContatoRepository repo, IDDDRepository dddRepository, IRabbitMQMessageSender messageSender, IUnitOfWork unitOfWork) : base(unitOfWork)
         {
             _repository = repo ?? throw new ArgumentNullException(nameof(repo));
             _dddRepository = dddRepository ?? throw new ArgumentNullException(nameof(dddRepository));
@@ -100,7 +97,9 @@ namespace TechChallengeFiap.Services
 
             Contato entity = new(model.Nome, model.Email, model.Telefone.Substring(2), ddd);
 
-            await _repository.Incluir(entity);
+             _repository.Incluir(entity);
+            
+            if(!await Commit()) return;
 
             var emailMessage = new EmailModel
             {
@@ -130,7 +129,8 @@ namespace TechChallengeFiap.Services
 
             entity.Alterar(model.Nome, model.Email, model.Telefone.Substring(2), entity.DDD);
 
-            await _repository.Alterar(entity);
+             _repository.Alterar(entity);
+            await Commit();
         }
 
         /// <summary>
@@ -141,7 +141,8 @@ namespace TechChallengeFiap.Services
         public async Task Deletar(Guid id)
         {
             var entity = await _repository.SelecionarPorId(id);
-            await _repository.Remover(entity);
+             _repository.Remover(entity);
+            await Commit();
         }
     }
 }

@@ -17,37 +17,30 @@ namespace TechChallengeFiap.Infrastructure.Repository
             _dbSet = _context.Set<T>();
         }
 
-        public async Task Alterar(T entity)
-        {
-            _dbSet.Update(entity);
-            await _context.SaveChangesAsync();
-        }
+        public virtual void Alterar(T entity) => _dbSet.Update(entity);
 
         public async Task<T> Buscar(Expression<Func<T, bool>> predicate)
-            =>  await _dbSet.FirstOrDefaultAsync(predicate);
-        
-        
+            => await _dbSet.FirstOrDefaultAsync(predicate);
 
-        public virtual async Task<List<T>> BuscarVarios(Expression<Func<T, bool>> predicate) 
+        public virtual async Task<List<T>> BuscarVarios(Expression<Func<T, bool>> predicate)
             => await _dbSet.Where(predicate).ToListAsync();
 
-        public async Task Incluir(T entity)
+        public virtual void Incluir(T entity)
         {
             entity.DataCriacao = DateTime.Now;
-            await _dbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            _dbSet.Add(entity);
         }
 
-        public async Task Remover(T entity)
-        {
-            _context.Remove(entity);
-            await _context.SaveChangesAsync();
-        }
+        public virtual void Remover(T entity) => _dbSet.Remove(entity);
 
-        public virtual async Task<T> SelecionarPorId(Guid id) 
+        public virtual async Task<T> SelecionarPorId(Guid id)
             => await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
-        
-        public virtual async Task<List<T>> SelecionarTudo() 
+
+        public virtual async Task<List<T>> SelecionarTudo()
             => await _dbSet.ToListAsync();
+
+        public void Dispose() => _context.Dispose();
+
+        public async Task<int> SaveChanges() => await _context.SaveChangesAsync();
     }
 }
