@@ -4,7 +4,7 @@ using TechChallengeFiap.Domain.Models.Regiao;
 
 namespace TechChallengeFiap.Services
 {
-    public class RegiaoService : IRegiaoService
+    public class RegiaoService : BaseService, IRegiaoService
     {
         private readonly IRegiaoRepository _regiaoRepository;
 
@@ -13,7 +13,7 @@ namespace TechChallengeFiap.Services
         /// </summary>
         /// <param name="regiaoRepository"></param>
         /// <exception cref="ArgumentNullException"></exception>
-        public RegiaoService(IRegiaoRepository regiaoRepository)
+        public RegiaoService(IRegiaoRepository regiaoRepository, IUnitOfWork unitOfWork) : base(unitOfWork)
         => _regiaoRepository = regiaoRepository ?? throw new ArgumentNullException(nameof(regiaoRepository));
 
         /// <summary>

@@ -3,6 +3,7 @@ using TechChallengeFiap.Domain.Interfaces.Repository;
 using TechChallengeFiap.Domain.Interfaces.Service;
 using TechChallengeFiap.Infrastructure.Contexto;
 using TechChallengeFiap.Infrastructure.Repository;
+using TechChallengeFiap.Infrastructure.Uow;
 using TechChallengeFiap.Services;
 
 namespace TechChallengeFiap.Application.Configurations
@@ -22,6 +23,7 @@ namespace TechChallengeFiap.Application.Configurations
 
         public static void RegistraRepositories(this IServiceCollection services)
         {
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDDDRepository, DDDRepository>();
             services.AddScoped<IEstadoRepository, EstadoRepository>();
             services.AddScoped<IContatoRepository, ContatoRepository>();
