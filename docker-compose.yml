@@ -1,0 +1,49 @@
+version: "3.4"
+
+services:
+
+  api-techChallenge:
+    image: api-techchallenge:latest
+    container_name: tech-challenge-api
+    build:
+      context: .
+      dockerfile: ./src/TechChallengeFiap.Application/Dockerfile #onde esta meu dockerfile
+    restart: always
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: "https://+:8080;http://+:8081"
+      USE_HTTPS_REDIRECTION: "false"
+    depends_on:
+      - rabbitmq
+      - database
+
+# email-techChallenge:
+#    image: email-techchallenge:latest
+#    container_name: email-challenge-api
+#    build:
+#      context: ../src
+#      dockerfile: ./src/TechChallengeFiap.Email #onde esta meu dockerfile
+#    restart: always
+#    environment:
+#      ASPNETCORE_ENVIRONMENT: Development
+#      ASPNETCORE_URLS: "https://+:8082;http://+:8083"
+#      USE_HTTPS_REDIRECTION: "false"
+#    depends_on:
+#      - rabbitmq
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: techChallengeMQ
+    restart: always
+    ports:
+      - "30000:30000"
+
+  database:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    container_name: techChallengeMSSQL
+    ports: 
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "MyDB@123"
+      ACCEPT_EULA: "Y"

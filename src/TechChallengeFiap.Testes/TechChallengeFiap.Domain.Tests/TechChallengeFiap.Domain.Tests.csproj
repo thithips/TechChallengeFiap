@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\TechChallengeFiap.Domain\TechChallengeFiap.Domain.csproj" />
+    <ProjectReference Include="..\..\TechChallengeFiap.Domain\TechChallengeFiap.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
