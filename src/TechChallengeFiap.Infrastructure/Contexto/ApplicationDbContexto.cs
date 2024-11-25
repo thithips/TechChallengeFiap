@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Reflection;
 using TechChallengeFiap.Domain.Entities;
 using TechChallengeFiap.Infrastructure.Seeds;
@@ -14,6 +15,12 @@ namespace TechChallengeFiap.Infrastructure.Contexto
 
         public ApplicationDbContexto(DbContextOptions<ApplicationDbContexto> options) : base(options)
         {}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.ConfigureWarnings(warnings =>
+                warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
