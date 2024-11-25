@@ -1,6 +1,69 @@
-version: "3.4"
+version: "3.7"
 
 services:
+
+  zabbix-db:
+    image: mysql:8.0
+    container_name: zabbix-db
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password  # Definindo a senha do root do MySQL
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./zabbix/db:/var/lib/mysql
+    networks:
+      - docker_network-zabbix
+
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql:ubuntu-7.0-latest
+    container_name: zabbix-server-fiap
+    environment:
+      - ZBX_ALLOWIP=0.0.0.0/0
+      - DB_SERVER_HOST=zabbix-db
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_password
+      - MYSQL_ROOT_PASSWORD=root_password
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    ports:
+      - "10051:10051"
+    depends_on:
+      - zabbix-db
+    volumes:
+      - /var/lib/zabbix/export
+      - /var/lib/zabbix/snmptraps
+    networks:
+      - docker_network-zabbix
+
+  zabbix-frontend:
+    image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
+    container_name: zabbix-frontend-fiap
+    environment:
+      - DB_SERVER_HOST=zabbix-db
+      - MYSQL_DATABASE=zabbix
+      - MYSQL_USER=zabbix
+      - MYSQL_PASSWORD=zabbix_password
+      - PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    networks:
+      - docker_network-zabbix
+    ports:
+      - "80:8080"
+    depends_on:
+      - zabbix-server
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent2:alpine-7.0-latest
+    container_name: zabbix-agent-fiap
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+      ZBX_HOSTNAME: zabbix-agent
+    ports:
+      - "10050:10050"
+    networks:
+      - docker_network-zabbix
 
   prometheus:
     image: prom/prometheus:latest
@@ -27,7 +90,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always
     container_name: techChallengeMSSQL
-    ports: 
+    ports:
       - "1433:1433"
     environment:
       SA_PASSWORD: "MyDB@123"
@@ -45,14 +108,14 @@ services:
     container_name: tech-challenge-api
     build:
       context: .
-      dockerfile: ./src/TechChallengeFiap.Application/Dockerfile #onde esta meu dockerfile
+      dockerfile: ./src/TechChallengeFiap.Application/Dockerfile
     restart: always
     ports:
       - 8000:80
     environment:
       - "ConnectionStrings:ConnectionSQLServer=Server=techChallengeMSSQL,1433;Database=TechChallengeFiap;User Id=sa;Password=MyDB@123;Encrypt=False"
       - "RabbitMQSettings:Host=techChallengeMQ"
-      - "RabbitMQSettings:Port=5672" 
+      - "RabbitMQSettings:Port=5672"
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - USE_HTTPS_REDIRECTION=false
@@ -67,7 +130,7 @@ services:
     container_name: email-challenge-api
     build:
       context: .
-      dockerfile: ./src/TechChallengeFiap.Email/Dockerfile #onde esta meu dockerfile
+      dockerfile: ./src/TechChallengeFiap.Email/Dockerfile
     restart: always
     ports:
       - 8002:80
@@ -76,7 +139,7 @@ services:
       - ASPNETCORE_URLS=http://+:80
       - USE_HTTPS_REDIRECTION=false
       - "RabbitMQSettings:Host=techChallengeMQ"
-      - "RabbitMQSettings:Port=5672" 
+      - "RabbitMQSettings:Port=5672"
     depends_on:
       - techChallengeMQ
     networks:
@@ -88,12 +151,18 @@ services:
     restart: always
     ports:
       - "5672:5672"
-      - "15672:15672" 
+      - "15672:15672"
     networks:
       - techChallengeNetwork
+
+volumes:
+  zabbix-db-data:
+    driver: local
 
 networks:
   techChallengeNetwork:
     driver: bridge
   monitoring:
-    driver: bridge  
+    driver: bridge
+  docker_network-zabbix:
+    name: docker_network
