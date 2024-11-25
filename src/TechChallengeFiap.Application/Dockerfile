@@ -5,14 +5,14 @@ EXPOSE 8081
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["src/TechChallengeFiap.Application/TechChallengeFiap.Application.csproj", "/src/services/TechChallengeFiap.Application/"]
-COPY ["src/TechChallengeFiap.Core/TechChallengeFiap.Core.csproj", "/src/services/TechChallengeFiap.Core/"]
-COPY ["src/TechChallengeFiap.Domain/TechChallengeFiap.Domain.csproj", "/src/services/TechChallengeFiap.Domain/"]
-COPY ["src/TechChallengeFiap.Infrastructure/TechChallengeFiap.Infrastructure.csproj", "/src/services/TechChallengeFiap.Infrastructure/"]
-COPY ["src/TechChallengeFiap.Services/TechChallengeFiap.Services.csproj", "/src/services/TechChallengeFiap.Services/"]
-RUN dotnet restore "/src/services/TechChallengeFiap.Application/TechChallengeFiap.Application.csproj"
-COPY . ./
-WORKDIR "/src/services/TechChallengeFiap.Application"
+COPY ["src/TechChallengeFiap.Application/TechChallengeFiap.Application.csproj", "src/TechChallengeFiap.Application/"]
+COPY ["src/TechChallengeFiap.Core/TechChallengeFiap.Core.csproj", "src/TechChallengeFiap.Core/"]
+COPY ["src/TechChallengeFiap.Domain/TechChallengeFiap.Domain.csproj", "src/TechChallengeFiap.Domain/"]
+COPY ["src/TechChallengeFiap.Infrastructure/TechChallengeFiap.Infrastructure.csproj", "src/TechChallengeFiap.Infrastructure/"]
+COPY ["src/TechChallengeFiap.Services/TechChallengeFiap.Services.csproj", "src/TechChallengeFiap.Services/"]
+RUN dotnet restore "src/TechChallengeFiap.Application/TechChallengeFiap.Application.csproj"
+COPY . .
+WORKDIR /src/src/TechChallengeFiap.Application
 RUN dotnet build "TechChallengeFiap.Application.csproj" -c Release -o /app/build
 
 FROM build AS publish
