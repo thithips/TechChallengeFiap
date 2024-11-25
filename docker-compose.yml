@@ -2,6 +2,23 @@ version: "3.4"
 
 services:
 
+  techChallengeMSSQL:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    restart: always
+    container_name: techChallengeMSSQL
+    ports: 
+      - "1433:1433"
+    environment:
+      SA_PASSWORD: "MyDB@123"
+      ACCEPT_EULA: "Y"
+    healthcheck:
+      test: ["CMD-SHELL", "sqlcmd -S localhost -U sa -P MyDB@123 -Q 'SELECT 1'"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - techChallengeNetwork
+
   api-techChallenge:
     image: api-techchallenge:latest
     container_name: tech-challenge-api
@@ -9,13 +26,18 @@ services:
       context: .
       dockerfile: ./src/TechChallengeFiap.Application/Dockerfile #onde esta meu dockerfile
     restart: always
+    ports:
+      - 8000:80
     environment:
-      ASPNETCORE_ENVIRONMENT: Development
-      ASPNETCORE_URLS: "https://+:8080;http://+:8081"
-      USE_HTTPS_REDIRECTION: "false"
+      - "ConnectionStrings:ConnectionSQLServer=Server=techChallengeMSSQL,1433;Database=TechChallengeFiap;User Id=sa;Password=MyDB@123;Encrypt=False"
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - USE_HTTPS_REDIRECTION=false
     depends_on:
-      - rabbitmq
-      - database
+      - techChallengeMQ
+      - techChallengeMSSQL
+    networks:
+      - techChallengeNetwork
 
 # email-techChallenge:
 #    image: email-techchallenge:latest
@@ -31,19 +53,15 @@ services:
 #    depends_on:
 #      - rabbitmq
 
-  rabbitmq:
+  techChallengeMQ:
     image: rabbitmq:3-management
     container_name: techChallengeMQ
     restart: always
     ports:
       - "30000:30000"
+    networks:
+      - techChallengeNetwork
 
-  database:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-    restart: always
-    container_name: techChallengeMSSQL
-    ports: 
-      - "1433:1433"
-    environment:
-      SA_PASSWORD: "MyDB@123"
-      ACCEPT_EULA: "Y"
+networks:
+  techChallengeNetwork:
+    driver: bridge
