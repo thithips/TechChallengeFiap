@@ -1,5 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using Prometheus;
 using TechChallengeFiap.Application.Configurations;
+using TechChallengeFiap.Infrastructure.Contexto;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,15 @@ builder.Services.AddMetrics();
 builder.Services.AddSwaggerConfig();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContexto>();
+    if (db.Database.GetPendingMigrations().Any())
+    {
+        db.Database.Migrate();
+    }
+}
 
 app.UseSwaggerConfiguration(builder.Environment);
 app.UseHttpsRedirection();

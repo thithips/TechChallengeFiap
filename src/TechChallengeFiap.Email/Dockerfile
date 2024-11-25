@@ -5,11 +5,11 @@ EXPOSE 8083
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["src/TechChallengeFiap.Email/TechChallengeFiap.Email.csproj", "src/services/TechChallengeFiap.Email/"]
-COPY ["src/TechChallengeFiap.Core/TechChallengeFiap.Core.csproj", "src/services/TechChallengeFiap.Core/"]
-RUN dotnet restore "src/services/TechChallengeFiap.Email/TechChallengeFiap.Email.csproj"
+COPY ["src/TechChallengeFiap.Email/TechChallengeFiap.Email.csproj", "src/TechChallengeFiap.Email/"]
+COPY ["src/TechChallengeFiap.Core/TechChallengeFiap.Core.csproj", "src/TechChallengeFiap.Core/"]
+RUN dotnet restore "src/TechChallengeFiap.Email/TechChallengeFiap.Email.csproj"
 COPY . .
-WORKDIR "/src/services/TechChallengeFiap.Email/TechChallengeFiap.Email.csproj"
+WORKDIR /src/src/TechChallengeFiap.Email
 RUN dotnet build "TechChallengeFiap.Email.csproj" -c Release -o /app/build
 
 FROM build AS publish

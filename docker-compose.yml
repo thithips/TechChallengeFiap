@@ -2,6 +2,27 @@ version: "3.4"
 
 services:
 
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - monitoring
+
   techChallengeMSSQL:
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always
@@ -30,6 +51,8 @@ services:
       - 8000:80
     environment:
       - "ConnectionStrings:ConnectionSQLServer=Server=techChallengeMSSQL,1433;Database=TechChallengeFiap;User Id=sa;Password=MyDB@123;Encrypt=False"
+      - "RabbitMQSettings:Host=techChallengeMQ"
+      - "RabbitMQSettings:Port=5672" 
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - USE_HTTPS_REDIRECTION=false
@@ -39,29 +62,38 @@ services:
     networks:
       - techChallengeNetwork
 
-# email-techChallenge:
-#    image: email-techchallenge:latest
-#    container_name: email-challenge-api
-#    build:
-#      context: ../src
-#      dockerfile: ./src/TechChallengeFiap.Email #onde esta meu dockerfile
-#    restart: always
-#    environment:
-#      ASPNETCORE_ENVIRONMENT: Development
-#      ASPNETCORE_URLS: "https://+:8082;http://+:8083"
-#      USE_HTTPS_REDIRECTION: "false"
-#    depends_on:
-#      - rabbitmq
+  email-techChallenge:
+    image: email-techchallenge:latest
+    container_name: email-challenge-api
+    build:
+      context: .
+      dockerfile: ./src/TechChallengeFiap.Email/Dockerfile #onde esta meu dockerfile
+    restart: always
+    ports:
+      - 8002:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - USE_HTTPS_REDIRECTION=false
+      - "RabbitMQSettings:Host=techChallengeMQ"
+      - "RabbitMQSettings:Port=5672" 
+    depends_on:
+      - techChallengeMQ
+    networks:
+      - techChallengeNetwork
 
   techChallengeMQ:
     image: rabbitmq:3-management
     container_name: techChallengeMQ
     restart: always
     ports:
-      - "30000:30000"
+      - "5672:5672"
+      - "15672:15672" 
     networks:
       - techChallengeNetwork
 
 networks:
   techChallengeNetwork:
     driver: bridge
+  monitoring:
+    driver: bridge  
