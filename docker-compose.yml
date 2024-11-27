@@ -35,6 +35,7 @@ services:
     volumes:
       - /var/lib/zabbix/export
       - /var/lib/zabbix/snmptraps
+      - zabbix-data:/var/lib/zabbix
     networks:
       - docker_network-zabbix
 
@@ -70,6 +71,7 @@ services:
     container_name: prometheus
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus-data:/etc/prometheus
     ports:
       - "9090:9090"
     networks:
@@ -78,6 +80,10 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./dashboards:/var/lib/grafana/dashboards
+      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
     ports:
       - "3000:3000"
     environment:
@@ -158,6 +164,9 @@ services:
 volumes:
   zabbix-db-data:
     driver: local
+  prometheus-data:
+  grafana-data:
+  zabbix-data:
 
 networks:
   techChallengeNetwork:
