@@ -30,13 +30,13 @@ jobs:
       run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }} 
 
     - name: Construir imagem Docker
-      run: docker build -t dinizfernanda/api-techchallenge:latest .
+      run: docker build -t dinizfernanda/api-techchallenge:latest 
 
     - name: Publicar imagem Docker
       run: docker push dinizfernanda/api-techchallenge:latest
 
     - name: Construir imagem Docker
-      run: docker build -t dinizfernanda/email-techchallenge .
+      run: docker build -t dinizfernanda/email-techchallenge 
 
     - name: Publicar imagem Docker
       run: docker push dinizfernanda/email-techchallenge
