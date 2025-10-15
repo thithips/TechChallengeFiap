@@ -31,12 +31,12 @@ jobs:
 
     - name: Construir e Pulicar a imagem Docker
       run: 
-        docker build -t dinizfernanda/api-techchallenge:latest .
+        docker build -t dinizfernanda/api-techchallenge:latest -f src/TechChallengeFiap.Application/Dockerfile .
         docker push dinizfernanda/api-techchallenge:latest
 
     - name: Construir e Publicar a imagem Docker
       run: 
-        docker build -t dinizfernanda/email-techchallenge:latest .
+        docker build -t dinizfernanda/email-techchallenge:latest -f src/TechChallengeFiap.Email/Dockerfile .
         docker push dinizfernanda/email-techchallenge:latest
 
     - name: Listar arquivos no diretório
