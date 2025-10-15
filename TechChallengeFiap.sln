@@ -25,10 +25,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechChallengeFiap.Domain.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{45E463C0-35DE-4212-9E67-ADE3989E12C1}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		datasource.yml = datasource.yml
+		deployments-novo.yaml = deployments-novo.yaml
+		..\..\OneDrive\Documentos\yml\deployments.yml = ..\..\OneDrive\Documentos\yml\deployments.yml
 		docker-compose.yml = docker-compose.yml
 		prometheus.yml = prometheus.yml
-		datasource.yml = datasource.yml
-		..\..\OneDrive\Documentos\yml\deployments.yml = ..\..\OneDrive\Documentos\yml\deployments.yml
 	EndProjectSection
 EndProject
 Global

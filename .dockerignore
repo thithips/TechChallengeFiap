@@ -1,0 +1,4 @@
+# Ignorar dados do banco (não empacotar no build)
+zabbix/db
+zabbix/db/#*
+*/#*
