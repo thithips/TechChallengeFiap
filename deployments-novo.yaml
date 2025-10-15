@@ -1,0 +1,599 @@
+# ======================================================================
+# CONFIGMAPS
+# ======================================================================
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zabbix-db-config
+data:
+  MYSQL_ROOT_PASSWORD: root_password
+  MYSQL_DATABASE: zabbix
+  MYSQL_USER: zabbix
+  MYSQL_PASSWORD: zabbix_password
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zabbix-server-config
+data:
+  ZBX_ALLOWIP: "0.0.0.0/0"
+  DB_SERVER_HOST: zabbix-db-service
+  MYSQL_DATABASE: zabbix
+  MYSQL_USER: zabbix
+  MYSQL_PASSWORD: zabbix_password
+  MYSQL_ROOT_PASSWORD: root_password
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zabbix-frontend-config
+data:
+  DB_SERVER_HOST: zabbix-db-service
+  MYSQL_DATABASE: zabbix
+  MYSQL_USER: zabbix
+  MYSQL_PASSWORD: zabbix_password
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: zabbix-agent-config
+data:
+  ZBX_SERVER_HOST: zabbix-server
+  ZBX_HOSTNAME: zabbix-agent
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+data:
+  GF_SECURITY_ADMIN_USER: admin
+  GF_SECURITY_ADMIN_PASSWORD: admin
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  labels:
+    app: prometheus
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_configs:
+      - job_name: "api-techChallenge"
+        static_configs:
+          - targets: ["tech-challenge-api:80"]
+
+      - job_name: "rabbitmq"
+        static_configs:
+          - targets: ["techChallengeMQ:15692"]
+
+      - job_name: "prometheus"
+        static_configs:
+          - targets: ["localhost:9090"]
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-config
+data:
+  ConnectionStrings__ConnectionSQLServer: "Server=techchallengemssql-service,1433;Database=TechChallengeFiap;User Id=sa;Password=MyDB@123;Encrypt=False"
+  RabbitMQSettings__Host: techchallengemq-service
+  RabbitMQSettings__Port: "5672"
+  ASPNETCORE_ENVIRONMENT: Development
+  ASPNETCORE_URLS: "http://+:80"
+  USE_HTTPS_REDIRECTION: "false"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: email-config
+data:
+  RabbitMQSettings__Host: techchallengemq-service
+  RabbitMQSettings__Port: "5672"
+  ASPNETCORE_ENVIRONMENT: Development
+  ASPNETCORE_URLS: "http://+:80"
+  USE_HTTPS_REDIRECTION: "false"
+
+# ======================================================================
+# PERSISTENT VOLUME CLAIMS
+# ======================================================================
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zabbix-db-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prometheus-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: grafana-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: zabbix-data-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 5Gi
+
+# ======================================================================
+# DEPLOYMENTS E SERVICES
+# ======================================================================
+
+# ------------------------------
+# ZABBIX DB
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-db
+  template:
+    metadata:
+      labels:
+        app: zabbix-db
+    spec:
+      containers:
+        - name: zabbix-db
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306
+          envFrom:
+            - configMapRef:
+                name: zabbix-db-config
+          volumeMounts:
+            - mountPath: /var/lib/mysql
+              name: zabbix-db-storage
+      volumes:
+        - name: zabbix-db-storage
+          persistentVolumeClaim:
+            claimName: zabbix-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zabbix-db-service
+spec:
+  selector:
+    app: zabbix-db
+  ports:
+    - port: 3306
+      targetPort: 3306
+
+# ------------------------------
+# ZABBIX SERVER
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-server
+  template:
+    metadata:
+      labels:
+        app: zabbix-server
+    spec:
+      containers:
+        - name: zabbix-server
+          image: zabbix/zabbix-server-mysql:ubuntu-7.0-latest
+          ports:
+            - containerPort: 10051
+          envFrom:
+            - configMapRef:
+                name: zabbix-server-config
+          volumeMounts:
+            - mountPath: /var/lib/zabbix
+              name: zabbix-server-storage
+      volumes:
+        - name: zabbix-server-storage
+          persistentVolumeClaim:
+            claimName: zabbix-data-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zabbix-server-service
+spec:
+  selector:
+    app: zabbix-server
+  ports:
+    - port: 10051
+      targetPort: 10051
+
+# ------------------------------
+# ZABBIX FRONTEND
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-frontend
+  template:
+    metadata:
+      labels:
+        app: zabbix-frontend
+    spec:
+      containers:
+        - name: zabbix-frontend
+          image: zabbix/zabbix-web-apache-mysql:ubuntu-7.0-latest
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: zabbix-frontend-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zabbix-frontend-service
+spec:
+  selector:
+    app: zabbix-frontend
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
+# ------------------------------
+# ZABBIX AGENT
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: zabbix-agent-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zabbix-agent
+  template:
+    metadata:
+      labels:
+        app: zabbix-agent
+    spec:
+      containers:
+        - name: zabbix-agent
+          image: zabbix/zabbix-agent2:alpine-7.0-latest
+          ports:
+            - containerPort: 10050
+          envFrom:
+            - configMapRef:
+                name: zabbix-agent-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zabbix-agent-service
+spec:
+  selector:
+    app: zabbix-agent
+  ports:
+    - port: 80
+      targetPort: 10050
+
+# ------------------------------
+# PROMETHEUS
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prometheus-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      securityContext:
+        runAsUser: 65534
+        fsGroup: 65534
+      containers:
+        - name: prometheus
+          image: prom/prometheus:latest
+          ports:
+            - containerPort: 9090
+          args:
+            - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--storage.tsdb.path=/prometheus"
+          volumeMounts:
+            - name: prometheus-config
+              mountPath: /etc/prometheus/prometheus.yml
+              subPath: prometheus.yml
+            - name: prometheus-storage
+              mountPath: /prometheus
+      volumes:
+        - name: prometheus-config
+          configMap:
+            name: prometheus-config
+        - name: prometheus-storage
+          persistentVolumeClaim:
+            claimName: prometheus-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+spec:
+  selector:
+    app: prometheus
+  ports:
+    - port: 80
+      targetPort: 9090
+  type: LoadBalancer
+
+# ------------------------------
+# GRAFANA
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:latest
+          securityContext:
+            runAsUser: 0   # executa como root
+            runAsGroup: 0
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: grafana-config
+          volumeMounts:
+            - name: grafana-storage
+              mountPath: /var/lib/grafana
+      volumes:
+        - name: grafana-storage
+          persistentVolumeClaim:
+            claimName: grafana-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+spec:
+  selector:
+    app: grafana
+  ports:
+    - port: 80
+      targetPort: 3000
+  type: LoadBalancer
+
+# ------------------------------
+# TECHCHALLENGE MSSQL
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techchallengemssql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techchallengemssql
+  template:
+    metadata:
+      labels:
+        app: techchallengemssql
+    spec:
+      containers:
+        - name: techchallengemssql
+          image: mcr.microsoft.com/mssql/server:2019-latest
+          ports:
+            - containerPort: 1433
+          env:
+            - name: SA_PASSWORD
+              value: "MyDB@123"
+            - name: ACCEPT_EULA
+              value: "Y"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: techchallengemssql-service
+spec:
+  selector:
+    app: techchallengemssql
+  ports:
+    - port: 1433
+      targetPort: 1433
+
+# ------------------------------
+# TECHCHALLENGE MQ (RABBITMQ)
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: techchallengemq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: techchallengemq
+  template:
+    metadata:
+      labels:
+        app: techchallengemq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq:3-management
+          ports:
+            - containerPort: 5672
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: techchallengemq-service
+spec:
+  selector:
+    app: techchallengemq
+  ports:
+    - port: 5672
+      targetPort: 5672
+  type: LoadBalancer
+
+# ------------------------------
+# API TECHCHALLENGE
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-techchallenge-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-techchallenge
+  template:
+    metadata:
+      labels:
+        app: api-techchallenge
+    spec:
+      containers:
+        - name: api-techchallenge
+          image: dinizfernanda/api-techchallenge:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: api-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-techchallenge-service
+spec:
+  selector:
+    app: api-techchallenge
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
+
+# ------------------------------
+# EMAIL TECHCHALLENGE
+# ------------------------------
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: email-techchallenge-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: email-techchallenge
+  template:
+    metadata:
+      labels:
+        app: email-techchallenge
+    spec:
+      containers:
+        - name: email-techchallenge
+          image: dinizfernanda/email-techchallenge:latest
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: email-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: email-techchallenge-service
+spec:
+  selector:
+    app: email-techchallenge
+  ports:
+    - port: 80
+      targetPort: 80
+  type: LoadBalancer
